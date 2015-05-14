@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
 
     if @user
       flash[:success] = ["Welcome Back!"]
-      redirect_to user_url  # redirect_to music app
+      log_in_user!(@user)
+      redirect_to user_url
     else
       flash.now[:errors] = ["email/password incorrect"]
       render :new
@@ -19,6 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out!
+    redirect_to new_session_url
   end
 
   private

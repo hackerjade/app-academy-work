@@ -13,13 +13,14 @@ class ApplicationController < ActionController::Base
   end
 
   def log_in_user!(user)
-    user.session_token = session[:session_token]
+    @current_user = user
+    session[:session_token] = user.session_token
     user.save!
   end
 
-  def log_out!(user)
+  def log_out!
     session[:session_token] = nil
-    current_user.reset_session_token!
+    current_user = nil
   end
 
 end

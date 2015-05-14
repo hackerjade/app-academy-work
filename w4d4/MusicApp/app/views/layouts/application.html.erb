@@ -7,9 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link to "Sign Out", new_session_url if logged_in? %>
+  <% if logged_in? %>
+  <%=  button_to "Sign Out", session_url, method: :delete  %>
+  <% end %>
 
-<%= yield %>
+  <% flash.try(:map) do |_, msgs| %>
+    <% msgs.each do |msg| %>
+      <%= msg %><br>
+      <% end %>
+  <% end %>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <%= yield %>
 
 </body>
 </html>
