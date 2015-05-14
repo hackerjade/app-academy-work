@@ -1,14 +1,6 @@
 <h1>Sign up!</h1>
 
-
-<form action="<%= user_url %>" method="POST">
-  <%= protect_from_forgery %>
-  <label>E-mail
-    <input type="text" name="user[email]" value="<%= @user.email %>">
-  </label>
-
-  <label>Password
-    <input type="password" name="user[password]">
-  </label>
-  <input type="submit" value"Sign up">
-</form>
+<%= render "shared/form",
+  form_action:  user_url,
+  submit_value: "Sign up"
+%>

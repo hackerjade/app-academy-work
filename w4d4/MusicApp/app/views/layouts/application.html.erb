@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link to "Sign Out", new_session_url if logged_in? %>
 
 <%= yield %>
 

@@ -3,10 +3,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = ["Welcome to Music App!"]
-      redirect_to # Music app page?
+      redirect_to user_url
     else
-      flash[:errors] = @users.errors.full_messages
-      render :new
+      flash[:errors] = @user.errors.full_messages
+      redirect_to new_user_url
     end
   end
 
@@ -15,8 +15,8 @@ class UsersController < ApplicationController
     render :new
   end
 
-  def destroy
-
+  def show
+    render :show
   end
 
   private
