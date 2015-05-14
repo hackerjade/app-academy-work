@@ -1,0 +1,9 @@
+<form action="<%=form_action %>" method="post">
+  <input type="hidden" name="_method" value="<%= form_value %>">
+  <%= protect_from_forgery %>
+  <label>Band Name
+    <input type="text" name="band[name]" value="<%= @band.name %>">
+  </label>
+
+  <input type="submit" value="<%= submit_value %>">
+</form>
