@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :log_in_filter
+
   def create
     @album = Album.new(album_params)
     if @album.save
@@ -24,8 +26,8 @@ class AlbumsController < ApplicationController
   end
 
   def update
-    @album = Album.new(album_params)
-    if @album.save
+    @album = Album.find_by(params["id"])
+    if @album.update(album_params)
       flash[:success] = ["Album updated successfully"]
       redirect_to album_url(@album.id)
     else

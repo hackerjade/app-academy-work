@@ -1,0 +1,40 @@
+<form action="<%= form_action %>" method="post">
+  <input type="hidden" name="_method" value="<%= form_value %>">
+  <%= protect_from_forgery %>
+
+  <label>Track Name
+    <input type="text" name="track[name]" value="<%= @track.name %>">
+  </label>
+  <br>
+  <br>
+
+  <label>
+    <input type="radio" name="track[track_type]" value="bonus"
+        <%= "checked" if @track.track_type == "bonus" %>
+      >bonus</option>
+  </label>
+
+  <label>
+    <input type="radio" name="track[track_type]" value="regular"
+        <%= "checked" if @track.track_type == "regular" %>
+      >regular</option>
+  </label>
+
+  <br>
+  <br>
+
+  <label>Album Name
+    <select name="track[album_id]">
+      <option value=""></option>
+      <% Album.all.each do |album| %>
+      <option value="<%= album.id %>"
+        <%= "selected" if @track.album_id == album.id %>
+        ><%= album.name %></option>
+      <% end %>
+  </label>
+
+
+  <input type="submit" value="<%= submit_value %>">
+
+
+</form>
