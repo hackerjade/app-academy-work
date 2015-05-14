@@ -1,0 +1,8 @@
+<% flash.try(:each) do |type, feedback| %>
+  <ul>
+    <% feedback.each do |message| %>
+      <li> <%="#{type}: "+ message.to_s %> </li>
+    <% end %>
+  </ul>
+<% end %>
+<br>
