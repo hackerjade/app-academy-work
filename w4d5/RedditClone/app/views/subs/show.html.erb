@@ -3,3 +3,11 @@
 <%= @sub.description %>
 <br>
 <%= link_to "Back", subs_url%>
+
+<ul>
+<% @sub.posts.each do |post| %>
+    <li><%= post.content %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Make a new post', new_post_url(sub_id: @sub.id) %>

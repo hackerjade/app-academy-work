@@ -1,0 +1,14 @@
+<h1><%= @post.title %></h1>
+<br>
+
+<%= @post.content %>
+<br>
+<%@post.comments.each do |c|%>
+<br>
+<%= c.content%>
+<%end%>
+
+<br>
+<%= link_to "Edit Post", edit_post_url(@post) %>
+<%= link_to "Back", sub_url(@post.subs)%>
+<%= render "comments/form", post: @post %>
