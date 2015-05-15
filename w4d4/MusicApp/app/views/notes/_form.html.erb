@@ -1,0 +1,9 @@
+
+<form action="<%= track_notes_url(params["id"]) %>" method="post">
+  <%= protect_from_forgery %>
+
+  <%= current_user.email %>
+  <textarea name="note[text]"></textarea>
+
+  <input type="submit" value="Submit comment">
+</form>

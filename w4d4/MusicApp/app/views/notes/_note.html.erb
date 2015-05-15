@@ -1,0 +1,20 @@
+
+
+<br>
+<br>
+<br>
+
+<% Note.all.each do |note| %>
+  <b><%= User.find_by_id(note.user_id).email %></b>
+  <br>
+  <%= note.text%>
+
+  <% if current_user.id == note.user_id %>
+    <%= button_to "Delete Post",
+      track_note_url(params["id"], note.id),
+      method: :delete
+    %>
+  <% end %>
+  <br>
+  
+<% end %>

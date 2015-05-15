@@ -1,1 +1,12 @@
 <h1><%= Band.find_by_id(params["id"]).name %></h1>
+
+<% Band.find_by_id(params["id"]).albums.each do |album| %>
+    <label>Albums
+      <ul>
+        <li><%= album.name %></li>
+      </ul>
+    </label>
+<% end %>
+
+
+<%= button_to "add album", new_album_url, method: :get %>

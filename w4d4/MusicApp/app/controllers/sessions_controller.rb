@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       log_in_user!(@user)
       redirect_to user_url
     else
+      @user = User.new(session_params)
       flash.now[:errors] = ["email/password incorrect"]
       render :new
     end

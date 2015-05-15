@@ -2,6 +2,8 @@
 
 <% @bands.each do |band| %>
   <ul>
-    <li><%= band.name %></li>
+    <li><%= link_to band.name, band_url(band.id) %></li>
   </ul>
 <% end %>
+
+<%= button_to "Upload a band", new_band_url, method: :get %>

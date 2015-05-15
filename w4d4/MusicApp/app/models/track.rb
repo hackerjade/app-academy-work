@@ -13,6 +13,7 @@
 
 class Track < ActiveRecord::Base
   belongs_to(:albums)
+  has_many(:notes)
 
   validates :name, :album_id, :track_type, :lyrics, presence: true
 

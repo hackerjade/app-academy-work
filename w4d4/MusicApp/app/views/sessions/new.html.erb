@@ -2,5 +2,9 @@
 
 <%= render "shared/form",
   form_action: session_url,
-  submit_value: "Log in"
+  submit_value: "Log in",
+  user: @user
 %>
+  <br>
+  <br>
+ <%= button_to "or Sign up!", new_user_url, method: :get %>

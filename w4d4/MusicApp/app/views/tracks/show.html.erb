@@ -1,1 +1,6 @@
 <h1><%= Track.find_by_id(params["id"]).name %></h1>
+
+<%= ugly_lyrics(Track.find_by_id(params["id"]).lyrics) %>
+
+<%= render "notes/form" %>
+<%= render "notes/note" %>

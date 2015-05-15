@@ -1,1 +1,5 @@
-<h1><%= Album.find_by_id(params["id"]).name %></h1>
+<h1><%= Album.find_by_id(params["id"]).name %> by
+  <%=  Album.find_by_id(params["id"]).band.name %>
+</h1>
+
+<%= button_to "Add track", new_track_url, method: :get %>

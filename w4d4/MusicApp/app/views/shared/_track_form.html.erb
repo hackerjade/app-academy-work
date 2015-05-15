@@ -22,7 +22,12 @@
 
   <br>
   <br>
-
+  <label>Lyrics<br>
+    <textarea name="track[lyrics]"></textarea>
+  </label>
+  <br>
+  <br>
+  
   <label>Album Name
     <select name="track[album_id]">
       <option value=""></option>
@@ -32,6 +37,9 @@
         ><%= album.name %></option>
       <% end %>
   </label>
+
+  <br>
+
 
 
   <input type="submit" value="<%= submit_value %>">
