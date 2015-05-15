@@ -1,0 +1,9 @@
+<h1>Subreddits</h1>
+<ul>
+<%@subs.each do |sub|%>
+<li>
+  <%= link_to sub.title, sub_url(sub)%>
+  <%= link_to "Edit Sub", edit_sub_url(sub)%>
+</li>
+<%end%>
+</ul>

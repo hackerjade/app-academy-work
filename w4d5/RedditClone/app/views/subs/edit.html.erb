@@ -1,0 +1,7 @@
+<h1>Edit <%= @sub.title %></h1>
+<%= render "form",
+  sub: @sub,
+  form_action: sub_url(@sub),
+  form_method: "patch",
+  submit_value: "Edit Sub"
+%>
