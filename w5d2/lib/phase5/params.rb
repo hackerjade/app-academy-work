@@ -10,14 +10,12 @@ module Phase5
     # You haven't done routing yet; but assume route params will be
     # passed in as a hash to `Params.new` as below:
     def initialize(req, route_params = {})
-      # p req.query_string
-      # req.body
-      # p route_params
-      if req.query_string.nil?
-        params
-      else
-        parse_www_encoded_form(req.query_string)
-      end
+      [req.query_string, req.body].each { |param| parse_n_build(param)}
+      route_params.each { |k, v| params[k] = v }
+    end
+
+    def parse_n_build(param)
+      param ? parse_www_encoded_form(param) : params
     end
 
     def [](key)
@@ -25,7 +23,7 @@ module Phase5
     end
 
     def params
-      @params ||= {}
+      @params ||= ActiveSupport::HashWithIndifferentAccess.new
     end
 
     def to_s
@@ -42,14 +40,37 @@ module Phase5
     # { "user" => { "address" => { "street" => "main", "zip" => "89436" } } }
     def parse_www_encoded_form(www_encoded_form)
       queries = URI::decode_www_form(www_encoded_form)
+      data = []
       queries.each do |key, value|
-        params[key] = value
+        data << [parse = parse_key(key), value]
       end
+         build_params(data)
+    end
+
+    # def merge_queries()
+
+    def build_params(data)
+      data.each do |pair|
+        key = pair.first
+        value = pair.last
+        current = params
+        key.each_with_index do |k, i|
+          if i == key.length - 1
+            current[k] = value
+          else
+            current[k] ||= {}
+            current = current[k]
+          end
+        end
+      end
+
+      params
     end
 
     # this should return an array
     # user[address][street] should return ['user', 'address', 'street']
     def parse_key(key)
+      key.split(/\]\[|\[|\]/)
     end
   end
 end
