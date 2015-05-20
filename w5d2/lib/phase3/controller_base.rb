@@ -11,6 +11,7 @@ module Phase3
     def render(template_name)
       controller_name = self.class.to_s.underscore
       template_path = "views/#{controller_name}/#{template_name}.html.erb"
+
       template = File.read(template_path)
 
       template_content = ERB.new(template).result(binding)

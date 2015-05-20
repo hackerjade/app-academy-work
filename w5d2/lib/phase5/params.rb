@@ -11,7 +11,7 @@ module Phase5
     # passed in as a hash to `Params.new` as below:
     def initialize(req, route_params = {})
       [req.query_string, req.body].each { |param| parse_n_build(param)}
-      route_params.each { |k, v| params[k] = v }
+      route_params.each { |k, v| params[k] = v  }
     end
 
     def parse_n_build(param)
