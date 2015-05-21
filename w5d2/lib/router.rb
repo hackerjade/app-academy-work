@@ -23,8 +23,6 @@ class Route
       controller.invoke_action(action_name)
     end
   end
-
-  
 end
 
 module RouteHelper
