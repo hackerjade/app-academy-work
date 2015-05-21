@@ -3,34 +3,32 @@ require 'webrick'
 
 class Flash
   def initialize(req)
-    @flashes = {}
     req.cookies.each do |cookie|
-      if cookie.name == "_rails_lite_app"
-        @flashes = JSON.parse(cookie.value)
-      end
+      @old_cookies = JSON.parse(cookie.value) if cookie.name == "_flash"
     end
-  end
 
-  def now
-    @flashes[key] ||= {}
-    @flashes.delete(key)
+    @old_cookies ||= {}
+    @new_cookies = {}
   end
 
   def [](key)
-    @flashes[key]
+    @old_cookies[key] || @new_cookies[key]
   end
 
   def []=(key, val)
-    @flashes[key] = val
+    @new_cookies[key] = val
+  end
+
+  def now
+    @old_cookies
   end
 
   def store_flash(res)
-    res.cookies << WEBrick::Cookie.new(
+    cookie = WEBrick::Cookie.new(
       "_flash",
-      @flashes.to_json
+      @new_cookies.to_json
     )
+    cookie.path = "/"
+    res.cookies << cookie
   end
 end
-
-f = Flash.new
-f.now[:errors]

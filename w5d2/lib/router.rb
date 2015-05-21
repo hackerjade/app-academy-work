@@ -1,4 +1,5 @@
 class Route
+  # extend RouteHelper
   attr_reader :pattern, :http_method, :controller_class, :action_name
 
   def initialize(pattern, http_method, controller_class, action_name)
@@ -22,6 +23,13 @@ class Route
       controller.invoke_action(action_name)
     end
   end
+
+  
+end
+
+module RouteHelper
+  # (post_path(@post) = "")
+
 end
 
 class Router

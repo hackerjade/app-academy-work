@@ -1,6 +1,12 @@
 require 'webrick'
-require_relative '../lib/phase6/controller_base'
-require_relative '../lib/phase6/router'
+# require_relative '../lib/phase6/controller_base'
+# require_relative '../lib/phase6/router'
+require_relative '../lib/flash.rb'
+require_relative '../lib/session.rb'
+require_relative '../lib/router.rb'
+require_relative '../lib/params.rb'
+
+require_relative '../lib/controller_base.rb'
 
 
 # http://www.ruby-doc.org/stdlib-2.0/libdoc/webrick/rdoc/WEBrick.html
@@ -19,7 +25,7 @@ $statuses = [
   { id: 3, cat_id: 1, text: "Curie is cool!" }
 ]
 
-class StatusesController < Phase6::ControllerBase
+class StatusesController < ControllerBase
   def index
     statuses = $statuses.select do |s|
       s[:cat_id] == Integer(params[:cat_id])
@@ -29,15 +35,44 @@ class StatusesController < Phase6::ControllerBase
   end
 end
 
-class Cats2Controller < Phase6::ControllerBase
+class Cats2Controller < ControllerBase
   def index
     render_content($cats.to_s, "text/text")
   end
 end
 
-router = Phase6::Router.new
+class Cats3Controller < ControllerBase
+  def index
+    render(:index)
+  end
+
+  def go
+    flash["go"] = "i'm going"
+    redirect_to "http://localhost:3000/catsy"
+  end
+
+  def show
+    @params
+    render :show
+  end
+
+  def stay
+    flash.now["stay"] = "I'm staying"
+    render :stay
+    # redirect_to "http://localhost:3000/catsy"
+  end
+end
+
+router = Router.new
 router.draw do
   get Regexp.new("^/cats$"), Cats2Controller, :index
+  get Regexp.new("^/catsy$"), Cats3Controller, :index
+  get Regexp.new("^/catsy/1$"), Cats3Controller, :show
+  get Regexp.new("^/catsy/2$"), Cats3Controller, :show
+  get Regexp.new("^/catsy/3$"), Cats3Controller, :show
+  get Regexp.new("^/go$"), Cats3Controller, :go
+  get Regexp.new("^/stay$"), Cats3Controller, :stay
+
   get Regexp.new("^/cats/(?<cat_id>\\d+)/statuses$"), StatusesController, :index
 end
 
