@@ -1,0 +1,119 @@
+/* PHASE 1: Header */
+body {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 12px;
+  background-color: #eee;
+}
+
+.header{
+  background-color: #f00;
+  color: white;
+  box-sizing: padding-box;
+  position: relative;
+  z-index: 1;
+}
+
+.header-nav {
+  height: 39px;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-logo {
+  color: white;
+  padding: 10px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+}
+
+.header-logo:hover {
+  background-color: black;
+}
+
+.header-list {
+  float: right;
+}
+
+.header-list li {
+  position: relative;
+  float: left
+}
+
+.header-list badge {
+  color: white;
+  font-size: 14px;
+  margin-left: 5px;
+  padding: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.header-list badge:hover {
+  background-color: red;
+}
+
+.group {
+  display: none;
+  margin-top: 39px;
+  position: absolute;
+}
+
+.header-list .group a:hover {
+  background-color: #eee;
+}
+
+.header-list .group a{
+  font-size: 14px;
+  width: 211px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  color: black;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.header-list a {
+  padding: 10px;
+  border-left: 1px solid white;
+  float: left;
+  padding-left: 22px;
+  padding-right: 22px;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+}
+
+.header-list li:last-child{
+  border-right: 1px solid white;
+}
+
+.header-list a:hover {
+  background-color: black;
+}
+
+.header .header-list notifications:hover .group{
+  display: block;
+}
+
+.header .header-list notifications:hover .group a{
+  /*width: inherit;*/
+}
+
+notifications:hover a[href="#test"]{
+  background-color: black;
+}
+
+notifications:hover badge{
+  background-color: red;
+}
