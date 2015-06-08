@@ -4,7 +4,10 @@ window.TrelloClone = {
   Views: {},
   Routers: {},
   initialize: function() {
-    var collection = new window.TrelloClone.Collections.Boards({reset: true});
+    var collection = new window.TrelloClone.Collections.Boards({
+      reset: true
+    });
+
     collection.fetch();
     var router = new window.TrelloClone.Routers.Route({
       collection: collection,
@@ -15,6 +18,4 @@ window.TrelloClone = {
   }
 };
 
-$(document).ready(function(){
-  window.TrelloClone.initialize();
-});
+$(window.TrelloClone.initialize);

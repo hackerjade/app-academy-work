@@ -1,8 +1,9 @@
-TrelloClone.Views.BoardShow = Backbone.View.extend({
+window.TrelloClone.Views.BoardShow = Backbone.View.extend({
   template: JST['boards/show'],
 
   initialize: function(model) {
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model.lists(), 'sync', this.render);
   },
 
   render: function() {
@@ -11,11 +12,11 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 
     var that = this;
     this.model.lists().each(function(list) {
-      var listView = new TrelloClone.Views.BoardListItem({
+      var listView = new window.TrelloClone.Views.BoardListItem({
         board: that.model,
         list: list
       });
-      that.$el.find('.list').append(listView.render().$el);
+      that.$el.find('.list-show').append(listView.render().$el);
     });
 
     return this;

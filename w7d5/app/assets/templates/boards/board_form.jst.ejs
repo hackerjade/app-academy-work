@@ -1,9 +1,9 @@
-<div class="board-canvas" style="height: 207px;">
-  <form class="board-form">
-    <label>Title
-    <input type="text" name="name" value=""></label>
 
-    <button type="submit" class="new-board">Create Board</button>
-    <div class="back-button"><a href="#" class="back-index">Boards</a></div>
-  </form>
-</div>
+
+<form class="board-form">
+  <label for='title'>Title</label>
+  <input type="text" name="board[title]" id='title' value='<%= board.escape('title') %>' >
+
+  <button type="submit" class="board-form-button">Create Board</button>
+  <div class="back-button"><a href="#" class="back-index">Boards</a></div>
+</form>

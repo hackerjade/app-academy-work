@@ -1,6 +1,7 @@
 
 <a href="#boards/<%= board.id %>">
 <div class="list">
-  <h2 class="board-header-name"><%= board.get('title') %></h2>
+  <h2 class="board-header-name"><%= board.get('title') %></h2><br>
 </div>
 </a>
+  <button class="delete" data="<%= board.id %>">Delete</button>
