@@ -1,9 +1,19 @@
 window.TrelloClone.Views.BoardShow = Backbone.View.extend({
+  tagName: 'div',
+  className: "container-fluid",
   template: JST['boards/show'],
 
   initialize: function(model) {
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.lists(), 'sync', this.render);
+  },
+
+  events: {
+    "drag .draggable": "dragCard"
+  },
+
+  dragCard: function() {
+
   },
 
   render: function() {

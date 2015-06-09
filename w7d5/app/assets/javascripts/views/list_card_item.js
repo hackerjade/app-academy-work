@@ -1,4 +1,9 @@
+
+
+
 window.TrelloClone.Views.ListCardItem = Backbone.View.extend({
+  tagName: "li",
+  className: "draggable",
   template: JST['boards/list_card_item'],
 
   initialize: function(options) {

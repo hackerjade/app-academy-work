@@ -1,4 +1,6 @@
 window.TrelloClone.Views.BoardIndex = Backbone.View.extend({
+  tagName: 'div',
+  className: "container-fluid",
   template: JST['boards/index'],
 
   initialize: function(collection) {
@@ -6,7 +8,7 @@ window.TrelloClone.Views.BoardIndex = Backbone.View.extend({
   },
 
   events: {
-    'click button.new-board-button': 'newBoard',
+    'click li.new-board-link': 'newBoard',
     'click button.delete': 'deleteBoard'
   },
 
@@ -26,7 +28,7 @@ window.TrelloClone.Views.BoardIndex = Backbone.View.extend({
 
     this.collection.each(function(board) {
       var boardView = new window.TrelloClone.Views.BoardIndexItem({model: board});
-      this.$el.find('.board-canvas').append(boardView.render().$el);
+      this.$el.find('.board-list').append(boardView.render().$el);
     }.bind(this));
 
     return this;

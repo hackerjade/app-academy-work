@@ -21,9 +21,74 @@ body {
   background-color: rgb(0, 121, 191);
 }
 
-a.back-index {
-  color: #BBC3CA;;
+div.backdrop {
+  margin-left: 43px;
+}
+
+a.list-header {
+  display: inline;
+  font-size: 15px;
+  line-height: 18px;
+  margin: 0;
+  min-height: 19px;
+  min-width: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+a:hover {
   text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  color: #fff;
+}
+
+.board-list li {
+  float: left;
+  width: 25%;
+  height: 108px;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 7px;
+  margin-right: 16px;
+  text-decoration: none;
+  background-color: rgba(0,0,0,.12);
+}
+
+div.list {
+  margin-left: 14px;
+  margin-top: -16px;
+}
+
+li a {
+  color: #fff;
+  height: 90px;
+  margin: 0 16px 16px 0;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+li:hover {
+  text-decoration: none;
+  background-color: #026AA7;
+}
+
+li.draggable {
+  position: relative;
+  background-color: snow;
+  -webkit-box-align: center;
+  display: -webkit-box;
+  color: #4d4d4d;
+  left: -22px;
+  margin: 5px;
+  border-radius: 4px;
+  height: 34px;
+  text-indent: 21px;
+  top: auto;
+
 }
 
 button.new-board-button {
@@ -50,7 +115,6 @@ div.board-index {
   cursor: default;
   font-weight: 700;
   line-height: 30px;
-  padding-left: 6px;
 }
 
 h2.board-header-name {
@@ -65,11 +129,11 @@ h2.board-header-name {
   word-wrap: break-word;
 }
 
-.list:first-child {
-  margin-left: 10px;
+h2.board-header-name:hover {
+  text-decoration: none;
 }
 
-.list {
+ul.list {
   background: #e2e4e6;
   border-radius: 3px;
   flex: 0 0 270px;
@@ -77,9 +141,5 @@ h2.board-header-name {
   max-height: 100%;
   float: left;
   width: 270px;
-}
-
-.board-canvas {
-  margin-right: 0;
   position: relative;
 }

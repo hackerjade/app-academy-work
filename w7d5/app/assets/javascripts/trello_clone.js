@@ -11,7 +11,7 @@ window.TrelloClone = {
     collection.fetch();
     var router = new window.TrelloClone.Routers.Route({
       collection: collection,
-      $rootEl: $('#main')}
+      $rootEl: $('.backdrop')}
     );
 
     Backbone.history.start();

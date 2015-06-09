@@ -1,5 +1,8 @@
-<div class="list">
-  <a href="#boards/<%= board.get('id') %>/lists/<%= list.get('id') %>">
-      <%= list.get('title') %>
-  </a>
-</div>
+<script> $(function() {
+  $('ul.list').sortable();
+  });
+</script>
+
+<h2 class="list-header">
+    <%= list.get('title') %>
+</h2>

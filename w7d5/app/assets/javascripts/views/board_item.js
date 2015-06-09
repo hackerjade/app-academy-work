@@ -1,4 +1,5 @@
 TrelloClone.Views.BoardIndexItem = Backbone.View.extend({
+  tagName: 'li',
   template: JST['boards/board_item'],
 
   initialize: function(model) {

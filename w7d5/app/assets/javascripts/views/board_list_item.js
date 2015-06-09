@@ -1,4 +1,6 @@
 window.TrelloClone.Views.BoardListItem = Backbone.View.extend({
+  tagName: "ul",
+  className: "list",
   template: JST['boards/board_list_item'],
 
   initialize: function(options) {
@@ -21,7 +23,7 @@ window.TrelloClone.Views.BoardListItem = Backbone.View.extend({
         list: that.list,
         card: card
       });
-      that.$el.find('.list').append(cardView.render().$el);
+      that.$el.append(cardView.render().$el);
     });
 
     return this;
